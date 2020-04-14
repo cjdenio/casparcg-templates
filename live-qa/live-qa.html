@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://kit.fontawesome.com/921bd8fdbd.js" crossorigin="anonymous"></script> 
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        html, body{
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+        }
+        .body{
+            height: 100%;
+            width: 100%;
+            background-image: linear-gradient(to bottom, #00f7ff, #00afff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            transition: all 700ms;
+        }
+        .content{
+            height: 70%;
+            width: 70%;
+            background-color: rgba(255, 255, 255, 1);
+            border-radius: 5vw;
+            color: black;
+            position: relative;
+            overflow: hidden;
+
+            display: flex;
+            flex-direction: column;
+
+            transition: all 700ms;
+        }
+        .social-icon{
+            display: inline-block;
+            width: auto;
+            font-size: 5vw;
+            padding: 3vw;
+            border-bottom-right-radius: 50%;
+            color: white;
+        }
+        .social-icon.facebook{
+            background-color: #4267B2;
+        }
+        .social-icon.youtube{
+            background-color: red;
+        }
+        .header{
+            display: flex;
+            align-items: center;
+        }
+        .header .user{
+            margin-left: auto;
+            margin-right: 2vw;
+            font-family: "Fira Sans", sans-serif;
+            font-weight: bold;
+            font-size: 3vw;
+        }
+        .user > *{
+            vertical-align: middle;
+        }
+        .avatar{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-right: 1vw;
+        }
+        .question{
+            flex-grow: 1;
+            padding: 1vw;
+            padding-top: 2vw;
+            font-size: 3vw;
+            font-family: "Fira Sans", sans-serif;
+            text-align: center;
+            line-height: 4vw;
+
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+        .question-mark{
+            position: absolute;
+            color: black;
+            opacity: 0.1;
+            left: 0;
+            bottom: 0;
+            font-size: 35vw;
+            transform: rotate(-20deg);
+
+            transition: transform 700ms;
+        }
+
+        /* .question, .user{
+            opacity: 0;
+        }
+        .content{
+            height: 13vw;
+            width: 13vw;
+            border-radius: 50%;
+            background-color: red;
+        } */
+
+        .body.hidden{
+            opacity: 0;
+        }
+        .body.hidden .content{
+            transform: translateY(3vw);
+        }
+        .body.hidden .question-mark{
+            transform: rotate(-40deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="body hidden">
+        <i class="fas fa-question question-mark"></i>
+        <div class="content">
+            <!--<i class="fab fa-facebook fa-fw social-icon facebook"></i>-->
+            <div class="header">
+                <i class="fab fa-youtube fa-fw social-icon youtube" id="social-icon"></i>
+                <div class="user">
+                    <img src="https://avatars3.githubusercontent.com/u/34525547" class="avatar" id="avatar">
+                    <span class="name" id="name">Caleb Denio</span>
+                </div>
+            </div>
+            <div class="question" id="question">
+                What is the best software for live streaming?
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function play(){
+            // if(document.getElementById("avatar").complete){
+            //     document.getElementsByClassName("body")[0].classList.remove("hidden")
+            // }
+            // else{
+            //     document.getElementById("avatar").addEventListener("load", function(){
+            //         document.getElementsByClassName("body")[0].classList.remove("hidden")
+            //     }, {
+            //         once: true
+            //     })
+            // }
+            document.getElementsByClassName("body")[0].classList.remove("hidden")
+        }
+        function stop(){
+            document.getElementsByClassName("body")[0].classList.add("hidden")
+        }
+        function update(data){
+            if(!data || data == ""){
+                return
+            }
+
+            console.log("UPDATED " + data)
+            data = JSON.parse(data)
+
+            document.getElementById("name").innerText = data.name || ""
+            document.getElementById("question").innerText = data.question || ""
+            if(data.avatar) document.getElementById("avatar").src = data.avatar
+
+            var si = document.getElementById("social-icon")
+
+            switch(data.channel.toLowerCase()){
+                case "youtube":
+                    si.classList.remove("fa-facebook")
+                    si.classList.remove("facebook")
+                    si.classList.add("fa-youtube")
+                    si.classList.add("youtube")
+                    break
+                case "facebook":
+                    si.classList.remove("fa-youtube")
+                    si.classList.remove("youtube")
+                    si.classList.add("fa-facebook")
+                    si.classList.add("facebook")
+                    break
+            }
+        }
+        function next(){
+
+        }
+    </script>
+</body>
+</html>
