@@ -62,16 +62,16 @@ function next() {
                 container.removeClass("question-only");
                 break;
             case 2:
-                $('.answer-a').removeClass("hidden");
+                $('.answer-a').removeClass("init-hidden");
                 break;
             case 3:
-                $('.answer-b').removeClass("hidden");
+                $('.answer-b').removeClass("init-hidden");
                 break;
             case 4:
-                $('.answer-c').removeClass("hidden");
+                $('.answer-c').removeClass("init-hidden");
                 break;
             case 5:
-                $('.answer-d').removeClass("hidden");
+                $('.answer-d').removeClass("init-hidden");
                 break;
         }
     }
