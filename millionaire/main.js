@@ -36,7 +36,7 @@ function update(data) {
 
     // Question
     if (data.question && data.question.text !== undefined) {
-        $('.question').text(data.question.text);
+        $('.question').html(data.question.text);
     }
 
     // Answers
@@ -105,6 +105,14 @@ function updateAnswer(answerToUpdate, data){
         }
         else{
             answerToUpdate.removeClass("selected");
+        }
+    }
+    if(data.hidden !== undefined){
+        if(data.hidden){
+            answerToUpdate.addClass("hidden");
+        }
+        else{
+            answerToUpdate.removeClass("hidden");
         }
     }
 }
