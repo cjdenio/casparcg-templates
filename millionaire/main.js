@@ -17,7 +17,7 @@ function stop() {
     container.addClass("hidden");
 
     currentStep = 0;
-    $('.answer').addClass("hidden").removeClass("correct").removeClass("incorrect").removeClass("selected");
+    $('.answer').addClass("init-hidden").removeClass("correct").removeClass("incorrect").removeClass("selected").removeClass("hidden");
     container.addClass("question-only");
 }
 function update(d){

@@ -16,7 +16,7 @@ body{
   margin: 0 auto;
   width: 50%;
   font-size: 2vw;
-  text-align: center;
+  text-align: left;
   font-family: "Jost", sans-serif;
   transition: opacity 500ms;
 }
@@ -42,13 +42,30 @@ body{
   text-overflow: ellipsis;
   transition: transform 500ms;
   z-index: 10;
+  text-align: center;
 }
 
-.question, .answer {
+.question, .answer, .lifelines {
   background-color: black;
   color: white;
   border: 0.25vw solid #21aaff;
   border-radius: 2000px;
+}
+
+.lifelines{
+  transition: opacity 500ms;
+  display: inline-block;
+  margin-bottom: 0.7vw;
+  margin-left: 0.7vw;
+  padding: 0.7vw 1vw;
+}
+
+.lifelines i{
+  margin: 0 0.3vw;
+}
+
+.container.hidden .lifelines, .container.question-only .lifelines{
+  opacity: 0;
 }
 
 .answers {
