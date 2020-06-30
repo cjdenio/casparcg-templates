@@ -22,23 +22,20 @@
             position: absolute;
             left: 0;
             top: 0;
-
-            visibility: hidden;
         }
 
         #clock {
             font-family: "Roboto Condensed", sans-serif;
             font-weight: bold;
-            background-color: white;
+            background-image: linear-gradient(to bottom, white, rgb(200, 200, 200));
             display: inline-block;
             font-size: 15vw;
             text-align: center;
             font-weight: bold;
 
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            bottom: calc(50% - 10vw);
+            left: calc(50% - 22.5vw);
 
             color: #d74b65;
 
@@ -46,13 +43,13 @@
             transition-delay: 700ms;
 
             overflow: hidden;
+
             height: 20vw;
+            width: 45vw;
 
             display: flex;
             align-items: center;
             justify-content: center;
-
-            padding: 0 5vw;
         }
         #body.hidden #clock{
             height: 0;
