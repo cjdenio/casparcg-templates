@@ -43,6 +43,7 @@ body{
   transition: transform 500ms;
   z-index: 10;
   text-align: center;
+  position: relative;
 }
 
 .question, .answer, .lifelines {
@@ -55,13 +56,24 @@ body{
 .lifelines{
   transition: opacity 500ms;
   display: inline-block;
-  margin-bottom: 0.7vw;
-  margin-left: 0.7vw;
-  padding: 0.7vw 1vw;
+  padding: 0.3vw 1vw;
+  border-style: solid solid none solid;
+  position: absolute;
+  left: 0;
+  bottom: 100%;
+  margin-bottom: -0.25vw;
+  margin-left: 4vw;
+  z-index: 15;
+  border-radius: 2vw 2vw 0 0;
 }
 
 .lifelines i{
   margin: 0 0.3vw;
+  font-size: 1.5vw;
+}
+
+.lifelines i.used {
+  color: grey;
 }
 
 .container.hidden .lifelines, .container.question-only .lifelines{
