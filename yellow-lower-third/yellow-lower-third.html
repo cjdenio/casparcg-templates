@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Raleway:wght@400;700;900&display=swap"
+        rel="stylesheet">
+
+    <script src="lib/gsap-public/minified/gsap.min.js"></script>
+
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        body {
+            /* background-color: #00ff00; */
+            font-family: "Raleway", sans-serif;
+        }
+
+        #lower-third {
+            background-color: rgba(0, 0, 0, 0.3);
+            color: white;
+            border: 0.3vw solid yellow;
+            border-left: none;
+
+            display: inline-block;
+            font-size: 5vw;
+            padding: 2vw 4vw;
+            padding-left: 5vw;
+            font-weight: bold;
+
+            position: absolute;
+            bottom: 5vw;
+            left: 5vw;
+
+            overflow: hidden;
+            white-space: nowrap;
+
+            clip-path: inset(0 100% 0 0);
+        }
+
+        #lower-third .accent {
+            background-color: yellow;
+            display: inline-block;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 2vw;
+            height: 0%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="lower-third">
+        <span id="lower-third-text">John Smith</span>
+        <div class="accent"></div>
+    </div>
+
+    <script>
+        var t = gsap.timeline({repeat: 1, repeatDelay: 3})
+        t.to(document.getElementById("lower-third"), { clipPath: 'inset(0 -1% 0 0)', duration: 1.5, ease: "power4.inOut" })
+        t.to(document.getElementsByClassName("accent")[0], { height: '100%', duration: 1.5, ease: "power3.inOut" }, "<")
+        t.yoyo(true)
+        t.pause()
+
+        function play() {
+            t.restart()
+        }
+
+        function stop() {
+
+        }
+
+        function update(d) {
+            d = JSON.parse(d)
+            document.getElementById("lower-third-text").innerText = d.name
+        }
+    </script>
+</body>
+
+</html>
